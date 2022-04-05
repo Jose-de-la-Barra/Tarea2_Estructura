@@ -1,0 +1,14 @@
+first_name,danger_category,attack_prob
+Kearney Carding,1,0.2733129
+Antonin Revans,1,
+Conney Lochrie,5,
+Anton Sellack,2,
+Lory Brydie,3,0.3140912
+Jose Perez,3,0.7
+Franco Garmendia,1,
+James Franco,5,0.2
+Antonia Saavedra,3,
+Cris Angel,4,0.3
+Christina Colón,3,
+
+  
