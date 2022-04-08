@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/josedelabarra/CLionProjects/untitled/cmake-build-debug"
+			"value" : "/Users/josedelabarra/CLionProjects/Tarea2_Estructura/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -419,7 +419,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/josedelabarra/CLionProjects/untitled"
+			"value" : "/Users/josedelabarra/CLionProjects/Tarea2_Estructura"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -991,7 +991,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/josedelabarra/CLionProjects/untitled/cmake-build-debug"
+			"value" : "/Users/josedelabarra/CLionProjects/Tarea2_Estructura/cmake-build-debug"
 		},
 		{
 			"name" : "untitled_IS_TOP_LEVEL",
@@ -1015,7 +1015,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/josedelabarra/CLionProjects/untitled"
+			"value" : "/Users/josedelabarra/CLionProjects/Tarea2_Estructura"
 		}
 	],
 	"kind" : "cache",
