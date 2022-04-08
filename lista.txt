@@ -10,5 +10,3 @@ James Franco,5,0.2
 Antonia Saavedra,3,
 Cris Angel,4,0.3
 Christina Colón,3,
-
-  

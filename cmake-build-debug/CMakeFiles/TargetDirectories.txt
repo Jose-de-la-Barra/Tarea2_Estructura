@@ -1,3 +1,3 @@
-/Users/josedelabarra/CLionProjects/untitled/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/josedelabarra/CLionProjects/untitled/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/josedelabarra/CLionProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir
+/Users/josedelabarra/CLionProjects/Tarea2_Estructura/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/josedelabarra/CLionProjects/Tarea2_Estructura/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/josedelabarra/CLionProjects/Tarea2_Estructura/cmake-build-debug/CMakeFiles/untitled.dir
