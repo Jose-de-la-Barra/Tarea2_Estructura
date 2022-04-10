@@ -1,0 +1,4 @@
+Conney Richard, 4, -1.000000
+James Franco, 5, 0.200000
+Cris Angel, 4, 0.300000
+Conney Lochrie, 5, -1.000000

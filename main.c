@@ -4,7 +4,10 @@
 #include<string.h>
 #include "Personas.h"
 
-#define MAXPERSONAS 150
+#define MAXPERSONAS 200
+#define MAXCHAR 1000
+
+const char* PERSON_FORMAT_OUT = "%s, %ld, %Lf\n";
 
 void category(Persona* personas, int cont, char *, FILE *, char *);
 
@@ -48,7 +51,6 @@ int main(int argc, char *argv[]) {
 
     category(personas, cont, argv[2], fpin, argv[3]);
 
-
     fclose(fpin);
     return 0;
 }
@@ -61,9 +63,12 @@ void category(Persona *personas, int cont, char* num_lista, FILE * fpin, char* a
     if (fpout == NULL) perror("Opening file");
     long int danger_category;
 
-
     for (int i = 0; i < cont; i++) {
         danger_category = personas[i].dangerCategory;
+
+        if ( danger_category >= 4 ) {
+            fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb);
+        }
 
         }
 
