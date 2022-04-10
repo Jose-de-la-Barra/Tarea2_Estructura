@@ -4,29 +4,27 @@
 #include<string.h>
 #include "Personas.h"
 
-#define MAXCHAR 150
+#define MAXPERSONAS 150
+
+void category(Persona* personas, int cont, char *, FILE *, char *);
 
 int main(int argc, char *argv[]) {
-    FILE* fp;
-    fp = fopen(argv[1], "r");
-    if (fp == NULL) {
-        return 1;
-    }
+    FILE* fpin;
+    fpin = fopen(argv[1], "r");
+    if (fpin == NULL) return 1;
 
-    char row[MAXCHAR];
+    char row[MAXPERSONAS];
     char *token;
     int cont = 0;
 
     // para sacar la primera línea
-    fgets(row, MAXCHAR, fp);
+    fgets(row, MAXPERSONAS, fpin);
     Persona  *personas = (Persona *) malloc(sizeof(Persona));
 
 
-    while (feof(fp) != true) {
-        fgets(row, MAXCHAR, fp);
-
+    while (feof(fpin) != true) {
+        fgets(row, MAXPERSONAS, fpin);
         Persona  *unaPersona = (Persona *) malloc(sizeof(Persona));
-
 
         // Para conseguir el nombre
         token = strtok(row, ",");
@@ -42,14 +40,32 @@ int main(int argc, char *argv[]) {
         if (token != NULL) {
             unaPersona -> attackProb = strtold(token, (char **) NULL);
         }
-        else unaPersona -> attackProb = 0;
-
+        else unaPersona -> attackProb = -1;  // asignamos un -1 para la gente que no tiene probabilidad de ataque para diferenciar
 
         personas[cont] = *unaPersona;
         cont++;
     }
 
-    printf("%s", personas[5].name);
+    category(personas, cont, argv[2], fpin, argv[3]);
 
+
+    fclose(fpin);
     return 0;
+}
+
+
+void category(Persona *personas, int cont, char* num_lista, FILE * fpin, char* arch_out) {
+
+    FILE* fpout;
+    fpout = fopen(arch_out, "w+");
+    if (fpout == NULL) perror("Opening file");
+    long int danger_category;
+
+
+    for (int i = 0; i < cont; i++) {
+        danger_category = personas[i].dangerCategory;
+
+        }
+
+    fclose(fpout);
 }
