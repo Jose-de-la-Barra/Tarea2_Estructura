@@ -7,16 +7,16 @@
 #define MAXPERSONAS 200
 #define MAXCHAR 1000
 
-const char* PERSON_FORMAT_OUT = "%s, %ld, %Lf\n";
+const char* PERSON_FORMAT_OUT = "%s,%ld,%Lf,%ld\n";
 
+
+void sort_words(Persona* personas, int count, char *);
 void category(Persona* personas, int cont, char *, FILE *, char *);
 
 int main(int argc, char *argv[]) {
     FILE* fpin;
     fpin = fopen(argv[1], "r");
-    if (fpin == NULL) {
-        return 1;
-    }
+    if (fpin == NULL) return 1;
 
     char row[MAXPERSONAS];
     char *token;
@@ -47,6 +47,8 @@ int main(int argc, char *argv[]) {
         }
         else unaPersona -> attackProb = -1;  // asignamos un -1 para la gente que no tiene probabilidad de ataque para diferenciar
 
+        unaPersona -> category = 0;  // agregamos una columna de ceros para un posterior ordenamiento
+
         personas[cont] = *unaPersona;
         cont++;
     }
@@ -59,7 +61,7 @@ int main(int argc, char *argv[]) {
 
 
 void category(Persona *personas, int cont, char* num_lista, FILE * fpin, char* arch_out) {
-
+    sort_words(personas, cont, arch_out);
     FILE* fpout;
     fpout = fopen(arch_out, "w+");
     if (fpout == NULL) perror("Opening file");
@@ -91,4 +93,25 @@ void category(Persona *personas, int cont, char* num_lista, FILE * fpin, char* a
         }
 
     fclose(fpout);
+}
+}
+
+void sort_words(Persona* personas, int count, char* arch_out) {
+    FILE *fpout;
+    fpout = fopen(arch_out, "w+");
+    if (fpout == NULL) perror("Opening file");
+    char temp[100];
+    for (int i = 0; i < count; i++) {
+        for (int j = 0; j < count; j++) {
+            if (strcmp(personas[i].name, personas[j].name) < 0) {
+
+                strcpy(temp, personas[i].name);
+                strcpy(personas[i].name, personas[j].name);
+                strcpy(personas[j].name, temp);
+            }
+        }
+    }
+    for (int i = 0; i < count; i++) {
+        fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb, personas[i].category);
+    }
 }
