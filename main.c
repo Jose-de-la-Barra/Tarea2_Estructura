@@ -14,7 +14,9 @@ void category(Persona* personas, int cont, char *, FILE *, char *);
 int main(int argc, char *argv[]) {
     FILE* fpin;
     fpin = fopen(argv[1], "r");
-    if (fpin == NULL) return 1;
+    if (fpin == NULL) {
+        return 1;
+    }
 
     char row[MAXPERSONAS];
     char *token;
@@ -62,11 +64,27 @@ void category(Persona *personas, int cont, char* num_lista, FILE * fpin, char* a
     fpout = fopen(arch_out, "w+");
     if (fpout == NULL) perror("Opening file");
     long int danger_category;
+    long double attack_prob;
 
     for (int i = 0; i < cont; i++) {
         danger_category = personas[i].dangerCategory;
-
-        if ( danger_category >= 4 ) {
+        attack_prob = personas[i].attackProb;
+        if (danger_category >= 4 ) {
+            fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb);
+        }
+        if (danger_category == 3 && attack_prob >=0.5){
+            fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb);
+        }
+        if (danger_category == 3 && attack_prob == 0){
+            fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb);
+        }
+        if (danger_category == 3 && attack_prob <=0.5){
+            fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb);
+        }
+        if (danger_category <= 2 && attack_prob == 0){
+            fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb);
+        }
+        if (danger_category <= 2 && attack_prob != 0){
             fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb);
         }
 
