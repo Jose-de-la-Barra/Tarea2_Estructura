@@ -61,7 +61,35 @@ int main(int argc, char *argv[]) {
 
 
 void category(Persona *personas, int cont, char* num_lista, FILE * fpin, char* arch_out) {
-    sort_words(personas, cont, arch_out);
+    //sort_words(personas, cont, arch_out);
+
+    FILE* fpout;
+    fpout = fopen(arch_out, "w+");
+    if (fpout == NULL) perror("Opening file");
+    long int danger_category;
+    long double attack_prob;
+
+    for (int i = 0; i < cont; i++) {
+        danger_category = personas[i].dangerCategory;
+        attack_prob = personas[i].attackProb;
+        if (danger_category >= 4 ) {
+            fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb);
+        }
+        if (danger_category == 3 && attack_prob >=0.5){
+            fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb);
+        }
+        if (danger_category == 3 && attack_prob == 0){
+            fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb);
+        }
+        if (danger_category == 3 && attack_prob <=0.5){
+            fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb);
+        }
+        if (danger_category <= 2 && attack_prob == 0){
+            fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb);
+        }
+        if (danger_category <= 2 && attack_prob != 0){
+            fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb);
+        }
 
     //FILE *fpout;
     //fpout = fopen(arch_out, "w+");
@@ -77,8 +105,7 @@ void category(Persona *personas, int cont, char* num_lista, FILE * fpin, char* a
     //    fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb,
     //                personas[i].category);
     //}
-
-    //fclose(fpout);
+    fclose(fpout);
 }
 
 void sort_words(Persona* personas, int count, char* arch_out) {
@@ -100,3 +127,4 @@ void sort_words(Persona* personas, int count, char* arch_out) {
         fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb, personas[i].category);
     }
 }
+
