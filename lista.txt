@@ -1,5 +1,5 @@
 first_name,danger_category,attack_prob
-Kearney Carding,1,0.2733129
+Kearney Carding,1,0.2733129,
 Antonin Revans,1,
 Conney Richard,4,
 Anton Sellack,2,
