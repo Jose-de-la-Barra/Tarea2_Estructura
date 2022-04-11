@@ -5,10 +5,8 @@
 #include "Personas.h"
 
 #define MAXPERSONAS 200
-#define MAXCHAR 1000
 
 const char* PERSON_FORMAT_OUT = "%s,%ld,%Lf,%ld\n";
-
 
 void sort_words(Persona* personas, int count, char *);
 void category(Persona* personas, int cont, char *);
@@ -60,7 +58,6 @@ int main(int argc, char *argv[]) {
     fclose(fpin);
     return 0;
 }
-
 
 void category(Persona *personas, int cont, char* arch_out) {
     FILE* fpout;
@@ -154,7 +151,7 @@ void sort_words(Persona* personas, int count, char* arch_out) {
             }
         }
     }
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < count+1; i++) {
         fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb, personas[i].category);
     }
     fclose(fpout);
@@ -169,6 +166,8 @@ void sortNewCategory(Persona *personas, int cont, char* num_lista, FILE * fpin, 
     char temp_2[100];
     long int temp_3;
     long double temp_4;
+
+    int out_mbr = atoi(num_lista);
 
     for (int i = 0; i < cont; i++) {
         for (int j = 0; j < cont; j++) {
@@ -192,8 +191,8 @@ void sortNewCategory(Persona *personas, int cont, char* num_lista, FILE * fpin, 
             }
         }
     }
-    for (int i = 0; i < cont; i++) {
-        fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb, personas[i].category);
+    for (int i = 0; i < out_mbr-1; i++) {
+        fprintf(fpout, "%s,%ld\n", personas[i].name, personas[i].category);
     }
     fclose(fpout);
 }
