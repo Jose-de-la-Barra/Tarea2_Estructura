@@ -126,8 +126,12 @@ void sort_words(Persona* personas, int count, char* arch_out) {
     FILE *fpout;
     fpout = fopen(arch_out, "w+");
     if (fpout == NULL) perror("Opening file");
+
     long int temp;
     char temp_2[100];
+    long int temp_3;
+    long double temp_4;
+
     for (int i = 0; i < count; i++) {
         for (int j = 0; j < count; j++) {
             if (strcmp(personas[i].name, personas[j].name) < 0) {
@@ -139,20 +143,33 @@ void sort_words(Persona* personas, int count, char* arch_out) {
                 strcpy(temp_2, personas[i].name);
                 strcpy(personas[i].name, personas[j].name);
                 strcpy(personas[j].name, temp_2);
+
+                temp_3 = personas[i].dangerCategory;
+                personas[i].dangerCategory = personas[j].dangerCategory;
+                personas[j].dangerCategory = temp_3;
+
+                temp_4 = personas[i].attackProb;
+                personas[i].attackProb = personas[j].attackProb;
+                personas[j].attackProb = temp_4;
             }
         }
     }
     for (int i = 0; i < count; i++) {
         fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb, personas[i].category);
     }
+    fclose(fpout);
 }
 
 void sortNewCategory(Persona *personas, int cont, char* num_lista, FILE * fpin, char* arch_out) {
     FILE *fpout;
     fpout = fopen(arch_out, "w+");
     if (fpout == NULL) perror("Opening file");
+
     long int temp;
     char temp_2[100];
+    long int temp_3;
+    long double temp_4;
+
     for (int i = 0; i < cont; i++) {
         for (int j = 0; j < cont; j++) {
             if (personas[i].category > personas[j].category) {
@@ -164,10 +181,19 @@ void sortNewCategory(Persona *personas, int cont, char* num_lista, FILE * fpin, 
                 strcpy(temp_2, personas[i].name);
                 strcpy(personas[i].name, personas[j].name);
                 strcpy(personas[j].name, temp_2);
+
+                temp_3 = personas[i].dangerCategory;
+                personas[i].dangerCategory = personas[j].dangerCategory;
+                personas[j].dangerCategory = temp_3;
+
+                temp_4 = personas[i].attackProb;
+                personas[i].attackProb = personas[j].attackProb;
+                personas[j].attackProb = temp_4;
             }
         }
     }
     for (int i = 0; i < cont; i++) {
         fprintf(fpout, PERSON_FORMAT_OUT, personas[i].name, personas[i].dangerCategory, personas[i].attackProb, personas[i].category);
     }
+    fclose(fpout);
 }
