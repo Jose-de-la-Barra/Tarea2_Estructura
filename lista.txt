@@ -11,3 +11,4 @@ Antonia Saavedra,3,
 Cris Angel,4,0.3
 Christina Colón,3,
 Conney Lochrie,5,
+Antonio Gonzales,5,
