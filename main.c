@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
 
         // Para conseguir la probabilidad de ataque
         token = strtok(NULL, ",");
-        token = strtok(token, "\n");
+        token = strtok(token, "\npo");
         if (token != NULL) {
             unaPersona -> attackProb = strtold(token, (char **) NULL);
         }
