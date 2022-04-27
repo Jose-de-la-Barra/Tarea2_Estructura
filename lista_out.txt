@@ -21,10 +21,3 @@ Ryan Williams,4
 Toniann Pitassi,4
 Dave Weckl,4
 Julia Groove,4
-Martina Hingis,3
-Iga Swiatek,3
-Anton Sellack,3
-Manuel Carrero,2
-Moshe Vardi,1
-Antonin Revans,1
-Dina Katabi,1
